@@ -20,7 +20,7 @@ public class BibliotecaDAO implements CRUD{
     @Override
     public List listarbiblioteca() {
          ArrayList<Biblioteca> bibliotecas = new ArrayList<>();
-            String consulta = " select * from Huamani_biblioteca ";
+            String consulta = " select * from huamani_biblioteca ";
             try {
                 con = cn.getConnection();
                 pst = con.prepareStatement(consulta);
@@ -28,7 +28,7 @@ public class BibliotecaDAO implements CRUD{
 
                 while (rs.next()) {
                     Biblioteca biblioteca = new Biblioteca();
-                    biblioteca.setIdbiblioteca(rs.getInt("ididbiblioteca"));
+                    biblioteca.setIdbiblioteca(rs.getInt("idbiblioteca"));
                     biblioteca.setNombre(rs.getString("nombre"));
                     biblioteca.setCodigo(rs.getString("codigo"));
                     biblioteca.setDireccion(rs.getString("direccion"));
@@ -47,13 +47,13 @@ public class BibliotecaDAO implements CRUD{
     @Override
     public Biblioteca buscarbiblioteca(int idbiblioteca) {
         String consulta = " select * from Huamani_biblioteca  "
-                    + " where Huamani_biblioteca = " + idbiblioteca;
+                    + " where huamani_biblioteca = " + idbiblioteca;
             try {
                 con = cn.getConnection();
                 pst = con.prepareStatement(consulta);
                 rs = pst.executeQuery();
                 while (rs.next()) {
-                    e.setIdbiblioteca(rs.getInt("ididbiblioteca"));
+                    e.setIdbiblioteca(rs.getInt("idbiblioteca"));
                     e.setNombre(rs.getString("nombre"));
                     e.setCodigo(rs.getString("codigo"));
                     e.setDireccion(rs.getString("direccion"));
@@ -71,7 +71,7 @@ public class BibliotecaDAO implements CRUD{
     @Override
     public boolean agregarbiblioteca(Biblioteca biblioteca) {
          String consulta = " insert into "
-                    + "Huamani_biblioteca (nombre, codigo, direccion, telefono, estado) "
+                    + "huamani_biblioteca (nombre, codigo, direccion, telefono, estado) "
                     + " values ('" + biblioteca.getNombre() + "',"
                     + " '" + biblioteca.getNombre() + "',"
                     + " '" + biblioteca.getCodigo() + "',"
@@ -118,7 +118,7 @@ public class BibliotecaDAO implements CRUD{
 
     @Override
     public boolean eliminarbiblioteca(int idbiblioteca) {
-        String consulta = " delete from Huamani_biblioteca  "
+        String consulta = " delete from huamani_biblioteca  "
                     + " where idbiblioteca = " + idbiblioteca;
             try {
                 con = cn.getConnection();
