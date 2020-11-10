@@ -20,7 +20,7 @@ public class BibliotecaDAO implements CRUD{
     @Override
     public List listarbiblioteca() {
          ArrayList<Biblioteca> bibliotecas = new ArrayList<>();
-            String consulta = " select * from ciclo_1 ";
+            String consulta = " select * from Apellido_biblioteca ";
             try {
                 con = cn.getConnection();
                 pst = con.prepareStatement(consulta);
@@ -28,12 +28,12 @@ public class BibliotecaDAO implements CRUD{
 
                 while (rs.next()) {
                     Biblioteca biblioteca = new Biblioteca();
-                    biblioteca.setIdcurso(rs.getInt("idcurso"));
+                    biblioteca.setIdbiblioteca(rs.getInt("ididbiblioteca"));
                     biblioteca.setNombre(rs.getString("nombre"));
                     biblioteca.setCodigo(rs.getString("codigo"));
-                    biblioteca.setCiclo(rs.getString("ciclo"));
-                    biblioteca.setCreditos(rs.getInt("creditos"));
-                    biblioteca.setHoras_semanales(rs.getInt("horas_semanales"));
+                    biblioteca.setDireccion(rs.getString("direccion"));
+                    biblioteca.setTelefono(rs.getString("telefono"));
+                    biblioteca.setEstado(rs.getString("estado"));
                     bibliotecas.add(biblioteca);
                 }
 
@@ -41,28 +41,97 @@ public class BibliotecaDAO implements CRUD{
                 System.out.println("Error: Problemas con el LISTAR");
                 System.out.println(e.getMessage());
             }
-            return cursos;
+            return bibliotecas;
     }
 
     @Override
     public Biblioteca buscarbiblioteca(int idbiblioteca) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String consulta = " select * from Apellido_biblioteca  "
+                    + " where Apellido_biblioteca = " + idbiblioteca;
+            try {
+                con = cn.getConnection();
+                pst = con.prepareStatement(consulta);
+                rs = pst.executeQuery();
+                while (rs.next()) {
+                    e.setIdbiblioteca(rs.getInt("ididbiblioteca"));
+                    e.setNombre(rs.getString("nombre"));
+                    e.setCodigo(rs.getString("codigo"));
+                    e.setDireccion(rs.getString("direccion"));
+                    e.setTelefono(rs.getString("telefono"));
+                    e.setEstado(rs.getString("estado"));
+                }
+            } catch (Exception error) {
+                System.out.println("Error: Problemas con el BUSCAR");
+                System.out.println(error.getMessage());
+            }
+
+            return e;
     }
 
     @Override
     public boolean agregarbiblioteca(Biblioteca biblioteca) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+         String consulta = " insert into "
+                    + "Apellido_biblioteca (nombre, codigo, direccion, telefono, estado) "
+                    + " values ('" + biblioteca.getNombre() + "',"
+                    + " '" + biblioteca.getNombre() + "',"
+                    + " '" + biblioteca.getCodigo() + "',"
+                    + " '" + biblioteca.getDireccion() + "',"
+                    + " '" + biblioteca.getTelefono() + "',"
+                    + " '" + biblioteca.getEstado() + "')";
+
+            try {
+                con = cn.getConnection();
+                pst = con.prepareStatement(consulta);
+                pst.executeUpdate();
+            } catch (Exception error) {
+                System.out.println("Error: Problemas con el INSERT");
+                System.out.println(error.getMessage());
+                return false;
+            }
+
+            return true;
+        }
 
     @Override
     public boolean editarbiblioteca(Biblioteca biblioteca) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+         String consulta = " update Apellido_biblioteca "
+                    + " set "
+                    + " nombre = '" + biblioteca.getNombre() + "' "
+                    + " codigo = '" + biblioteca.getCodigo() + "' "
+                    + " direccion = '" + biblioteca.getDireccion() + "' "
+                    + " telefono = '" + biblioteca.getTelefono() + "' "
+                    + " estado = '" + biblioteca.getEstado() + "' "
+                    + " where "
+                    + " idbiblioteca = " + biblioteca.getIdbiblioteca();
+            try {
+                con = cn.getConnection();
+                pst = con.prepareStatement(consulta);
+                pst.executeUpdate();
+            } catch (Exception error) {
+                System.out.println("Error: Problemas con la EDICION");
+                System.out.println(error.getMessage());
+                return false;
+            }
+
+            return true;
+        }
 
     @Override
     public boolean eliminarbiblioteca(int idbiblioteca) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        String consulta = " delete from Apellido_biblioteca  "
+                    + " where idbiblioteca = " + idbiblioteca;
+            try {
+                con = cn.getConnection();
+                pst = con.prepareStatement(consulta);
+                pst.executeUpdate();
+            } catch (Exception error) {
+                System.out.println("Error: Problemas con el ELIMINAR");
+                System.out.println(error.getMessage());
+                return false;
+            }
+
+            return true;
+        }
 
     
     
