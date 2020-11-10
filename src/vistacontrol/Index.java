@@ -1,66 +1,60 @@
 package vistacontrol;
 
 import java.util.List;
-import modelo.Curso_c1;
-import modeloDAO.CursoDAO_c1;
-import modelo.Curso_c2;
-import modeloDAO.CursoDAO_c2;
+import modelo.Biblioteca;
+import modeloDAO.BibliotecaDAO;
 import utils.Leer;
 
 public class Index {
     
-    public static void listarCurso_c1() {
-        CursoDAO_c1 cursoDAO_c1 = new CursoDAO_c1();
-        List<Curso_c1> cursos = cursoDAO_c1.listarcurso_c1();
-        System.out.println("Listado de Cursos");
-        System.out.println("ID\tApellidos y Nombre\tDNI\tCódigo\tEstado");
-        for (Curso_c1 curso : cursos) {
+    public static void listarBiblioteca() {
+        BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
+        List<Biblioteca> bibliotecas = bibliotecaDAO.listarbiblioteca();
+        System.out.println("Listado de Bibliotecas");
+        System.out.println("ID\tNombre\tCódigo\tDirección\tTelefono\tEstado");
+        for (Biblioteca biblioteca : bibliotecas) {
             System.out.println(
-                    curso.getIdcurso() + "\t"
-                    + curso.getNombre() + "\t"
-                    + curso.getCodigo() + "\t"
-                    + curso.getCiclo() + "\t"
-                    + curso.getTurno() + "\t"
-                    + curso.getCreditos() + "\t"
-                    + curso.getHoras_semanales() + "\t"
+                    biblioteca.getIdbiblioteca()+ "\t"
+                    + biblioteca.getNombre() + "\t"
+                    + biblioteca.getCodigo() + "\t"
+                    + biblioteca.getDireccion()+ "\t"
+                    + biblioteca.getTelefono()+ "\t"
+                    + biblioteca.getEstado()+ "\t"
             );
         }
     }
 
-    public static void eliminarCurso_c1() {
-        listarCurso_c1();
-        System.out.println("Ingrese el ID del curso a Eliminar");
+    public static void eliminarBiblioteca() {
+        listarBiblioteca();
+        System.out.println("Ingrese el ID del la biblioteca a Eliminar");
         int id = Leer.entero();
-        CursoDAO_c1 cursoDAO_c1 = new CursoDAO_c1();
-        cursoDAO_c1.eliminarcurso_c1(id);
+        BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
+        bibliotecaDAO.eliminarbiblioteca(id);
     }
 
-    public static void editarCurso_c1() {
-        listarCurso_c1();
-        System.out.println("Ingrese el ID del curso a editar: ");
+    public static void editarBiblioteca() {
+        listarBiblioteca();
+        System.out.println("Ingrese el ID del la biblioteca a editar: ");
         int id = Leer.entero();
         String nombre;
         String codigo;
-        String ciclo;
-        String turno;
-        int creditos;
-        int horas_semanales;
-        System.out.println("Editar Curso");
+        String direccion;
+        String telefono;
+        String estado;
+        System.out.println("Editar Biblioteca");
         System.out.print("Nombre: ");
         nombre = Leer.cadena();
         System.out.print("Codigo: ");
         codigo = Leer.cadena();
-        System.out.print("Ciclo: ");
-        ciclo = Leer.cadena();
-        System.out.print("Turno: ");
-        turno = Leer.cadena();
-        System.out.print("Creditos: ");
-        creditos = Leer.entero();
-        System.out.print("Horas Semanales: ");
-        horas_semanales = Leer.entero();
-        Curso_c1 curso = new Curso_c1(id, nombre, codigo, ciclo, turno, creditos, horas_semanales);
-        CursoDAO_c1 cursoDAO_c1 = new CursoDAO_c1();
-        cursoDAO_c1.editarcurso_c1(curso);
+        System.out.print("Direccion: ");
+        direccion = Leer.cadena();
+        System.out.print("Telefono: ");
+        telefono = Leer.cadena();
+        System.out.print("Estado: ");
+        estado = Leer.cadena();
+        Biblioteca biblioteca = new Biblioteca(id, nombre, codigo, direccion, telefono, estado);
+        BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
+        bibliotecaDAO.editarbiblioteca(biblioteca);
     }
 
     public static void agregarCurso_c1() {
@@ -86,85 +80,6 @@ public class Index {
         Curso_c1 curso = new Curso_c1(nombre, codigo, ciclo, turno, creditos, horas_semanales);
         CursoDAO_c1 cursoDAO_c1 = new CursoDAO_c1();
         cursoDAO_c1.agregarcurso_c1(curso);
-    }
-    
-    public static void listarCurso_c2() {
-        CursoDAO_c2 cursoDAO_c2 = new CursoDAO_c2();
-        List<Curso_c2> cursos = cursoDAO_c2.listarcurso_c2();
-        System.out.println("Listado de Cursos");
-        System.out.println("ID\tApellidos y Nombre\tDNI\tCódigo\tEstado");
-        for (Curso_c2 curso : cursos) {
-            System.out.println(
-                    curso.getIdcurso() + "\t"
-                    + curso.getNombre() + "\t"
-                    + curso.getCodigo() + "\t"
-                    + curso.getCiclo() + "\t"
-                    + curso.getTurno() + "\t"
-                    + curso.getCreditos() + "\t"
-                    + curso.getHoras_semanales() + "\t"
-            );
-        }
-    }
-
-    public static void eliminarCurso_c2() {
-        listarCurso_c2();
-        System.out.println("Ingrese el ID del curso a Eliminar");
-        int id = Leer.entero();
-        CursoDAO_c2 cursoDAO_c2 = new CursoDAO_c2();
-        cursoDAO_c2.eliminarcurso_c2(id);
-    }
-
-    public static void editarCurso_c2() {
-        listarCurso_c2();
-        System.out.println("Ingrese el ID del curso a editar: ");
-        int id = Leer.entero();
-        String nombre;
-        String codigo;
-        String ciclo;
-        String turno;
-        int creditos;
-        int horas_semanales;
-        System.out.println("Editar Curso");
-        System.out.print("Nombre: ");
-        nombre = Leer.cadena();
-        System.out.print("Codigo: ");
-        codigo = Leer.cadena();
-        System.out.print("Ciclo: ");
-        ciclo = Leer.cadena();
-        System.out.print("Turno: ");
-        turno = Leer.cadena();
-        System.out.print("Creditos: ");
-        creditos = Leer.entero();
-        System.out.print("Horas Semanales: ");
-        horas_semanales = Leer.entero();
-        Curso_c2 curso = new Curso_c2(id, nombre, codigo, ciclo, turno, creditos, horas_semanales);
-        CursoDAO_c2 cursoDAO_c2 = new CursoDAO_c2();
-        cursoDAO_c2.editarcurso_c2(curso);
-    }
-
-    public static void agregarCurso_c2() {
-        String nombre;
-        String codigo;
-        String ciclo;
-        String turno;
-        int creditos;
-        int horas_semanales;
-        System.out.println("Editar Curso");
-        System.out.print("Nombre: ");
-        nombre = Leer.cadena();
-        System.out.print("Codigo: ");
-        codigo = Leer.cadena();
-        System.out.print("Ciclo: ");
-        ciclo = Leer.cadena();
-        System.out.print("Turno: ");
-        turno = Leer.cadena();
-        System.out.print("Creditos: ");
-        creditos = Leer.entero();
-        System.out.print("Horas Semanales: ");
-        horas_semanales = Leer.entero();
-        Curso_c2 curso = new Curso_c2(nombre, codigo, ciclo, turno, creditos, horas_semanales);
-        CursoDAO_c2 cursoDAO_c2 = new CursoDAO_c2();
-        cursoDAO_c2.agregarcurso_c2(curso);
     }
 
     public static void menu() {
