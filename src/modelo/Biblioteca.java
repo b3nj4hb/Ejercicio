@@ -10,6 +10,14 @@ public class Biblioteca {
     public Biblioteca() {
     }
 
+    public Biblioteca(String nombre, String codigo, String direccion, String telefono, String estado) {
+        this.nombre = nombre;
+        this.codigo = codigo;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.estado = estado;
+    }
+
     public Biblioteca(int idbiblioteca, String nombre, String codigo, String direccion, String telefono, String estado) {
         this.idbiblioteca = idbiblioteca;
         this.nombre = nombre;
