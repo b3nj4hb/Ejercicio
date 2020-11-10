@@ -11,7 +11,7 @@ public class Index {
         BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
         List<Biblioteca> bibliotecas = bibliotecaDAO.listarbiblioteca();
         System.out.println("Listado de Cursos");
-        System.out.println("ID\tApellidos y Nombre\tDNI\tCódigo\tEstado");
+        System.out.println("ID\tNombre\tCodigo\tDireccion\tTelefono\tEstado");
         for (Biblioteca biblioteca : bibliotecas) {
             System.out.println(
                     biblioteca.getIdbiblioteca() + "\t"
