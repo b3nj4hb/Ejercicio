@@ -6,7 +6,6 @@ import modeloDAO.BibliotecaDAO;
 import utils.Leer;
 
 public class Index {
-<<<<<<< HEAD
 
     public static void listarBiblioteca() {
         CursoDAO_c1 cursoDAO_c1 = new CursoDAO_c1();
@@ -14,35 +13,21 @@ public class Index {
         System.out.println("Listado de Cursos");
         System.out.println("ID\tApellidos y Nombre\tDNI\tCódigo\tEstado");
         for (Curso_c1 curso : cursos) {
-=======
-    
-    public static void listarBiblioteca() {
-        BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
-        List<Biblioteca> bibliotecas = bibliotecaDAO.listarbiblioteca();
-        System.out.println("Listado de Bibliotecas");
-        System.out.println("ID\tNombre\tCódigo\tDirección\tTelefono\tEstado");
-        for (Biblioteca biblioteca : bibliotecas) {
->>>>>>> 8a60bb2cb9d22ebd25cfd4d75f2b45643db18023
             System.out.println(
-                    biblioteca.getIdbiblioteca()+ "\t"
-                    + biblioteca.getNombre() + "\t"
-                    + biblioteca.getCodigo() + "\t"
-                    + biblioteca.getDireccion()+ "\t"
-                    + biblioteca.getTelefono()+ "\t"
-                    + biblioteca.getEstado()+ "\t"
+                    curso.getIdcurso() + "\t"
+                    + curso.getNombre() + "\t"
+                    + curso.getCodigo() + "\t"
+                    + curso.getCiclo() + "\t"
+                    + curso.getTurno() + "\t"
+                    + curso.getCreditos() + "\t"
+                    + curso.getHoras_semanales() + "\t"
             );
         }
     }
 
-<<<<<<< HEAD
     public static void eliminarCurso_c1() {
         listarBiblioteca();
         System.out.println("Ingrese el ID del curso a Eliminar");
-=======
-    public static void eliminarBiblioteca() {
-        listarBiblioteca();
-        System.out.println("Ingrese el ID del la biblioteca a Eliminar");
->>>>>>> 8a60bb2cb9d22ebd25cfd4d75f2b45643db18023
         int id = Leer.entero();
         BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
         bibliotecaDAO.eliminarbiblioteca(id);
@@ -50,11 +35,7 @@ public class Index {
 
     public static void editarBiblioteca() {
         listarBiblioteca();
-<<<<<<< HEAD
         System.out.println("Ingrese el ID de la Biblioteca a editar: ");
-=======
-        System.out.println("Ingrese el ID del la biblioteca a editar: ");
->>>>>>> 8a60bb2cb9d22ebd25cfd4d75f2b45643db18023
         int id = Leer.entero();
         String nombre;
         String codigo;
@@ -98,7 +79,6 @@ public class Index {
         BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
         bibliotecaDAO.agregarbiblioteca(biblioteca);
     }
-<<<<<<< HEAD
 
     public static void listarCurso_c2() {
         CursoDAO_c2 cursoDAO_c2 = new CursoDAO_c2();
@@ -178,8 +158,6 @@ public class Index {
         CursoDAO_c2 cursoDAO_c2 = new CursoDAO_c2();
         cursoDAO_c2.agregarcurso_c2(curso);
     }
-=======
->>>>>>> 8a60bb2cb9d22ebd25cfd4d75f2b45643db18023
 
     public static void menu() {
         System.out.println("Menu Principal");
