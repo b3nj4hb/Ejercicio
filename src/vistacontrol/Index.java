@@ -87,98 +87,44 @@ public class Index {
         System.out.print("Escoja opción [1-3]: ");
     }
 
-    public static void menu_c1() {
+    public static void menu_biblioteca() {
         System.out.println("Menu Ciclo 1");
-        System.out.println("1. Agregar Cursos");
-        System.out.println("2. Eliminar Cursos");
-        System.out.println("3. Editar Cursos");
-        System.out.println("4. Listar Cursos");
+        System.out.println("1. Agregar Biblioteca");
+        System.out.println("2. Eliminar Biblioteca");
+        System.out.println("3. Editar Biblioteca");
+        System.out.println("4. Listar Biblioteca");
         System.out.println("5. Salir");
         System.out.print("Escoja opción [1-5]: ");
     }
 
-    public static void switch_c1() {
+    public static void inicio() {
         int opcion;
         do {
-            menu_c1();
+            menu_biblioteca();
             opcion = Leer.entero();
             switch (opcion) {
                 case 1:
-                    agregarCurso_c1();
+                    agregarBiblioteca();
                     break;
                 case 2:
-                    eliminarCurso_c1();
+                    eliminarBiblioteca();
                     break;
                 case 3:
-                    editarCurso_c1();
+                    editarBiblioteca();
                     break;
                 case 4:
                     listarBiblioteca();
                     break;
                 case 5:
-                    inicio();
+                    System.out.println("Hasta la proxima");
                     break;
                 default:
                     System.out.println("Error");
-                    switch_c1();
+                    inicio();
                     break;
             }
         } while (opcion != 5);
 
-    }
-
-    public static void switch_c2() {
-        int opcion;
-        do {
-            menu_c2();
-            opcion = Leer.entero();
-            switch (opcion) {
-                case 1:
-                    agregarCurso_c2();
-                    break;
-                case 2:
-                    eliminarCurso_c2();
-                    break;
-                case 3:
-                    editarCurso_c2();
-                    break;
-                case 4:
-                    listarCurso_c2();
-                    break;
-                case 5:
-                    inicio();
-                    break;
-                default:
-                    System.out.println("Error");
-                    switch_c2();
-                    break;
-            }
-        } while (opcion != 5);
-
-    }
-
-    public static void inicio() {
-
-        int opcion;
-        do {
-            menu();
-            opcion = Leer.entero();
-            switch (opcion) {
-                case 1:
-                    switch_c1();
-                    break;
-                case 2:
-                    switch_c2();
-                    break;
-                case 3:
-                    System.out.println("Hasta la proxima...");
-                    break;
-                default:
-                    System.out.println("Error");
-                    inicio();
-                    break;
-            }
-        } while (opcion != 3);
     }
 
     public static void main(String[] args) {
