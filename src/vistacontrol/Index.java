@@ -63,7 +63,7 @@ public class Index {
         String direccion;
         String telefono;
         String estado;
-        System.out.println("Editar Biblioteca");
+        System.out.println("Agregar Biblioteca");
         System.out.print("Nombre: ");
         nombre = Leer.cadena();
         System.out.print("Codigo: ");

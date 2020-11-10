@@ -20,7 +20,7 @@ public class BibliotecaDAO implements CRUD{
     @Override
     public List listarbiblioteca() {
          ArrayList<Biblioteca> bibliotecas = new ArrayList<>();
-            String consulta = " select * from Apellido_biblioteca ";
+            String consulta = " select * from Huamani_biblioteca ";
             try {
                 con = cn.getConnection();
                 pst = con.prepareStatement(consulta);
@@ -46,8 +46,8 @@ public class BibliotecaDAO implements CRUD{
 
     @Override
     public Biblioteca buscarbiblioteca(int idbiblioteca) {
-        String consulta = " select * from Apellido_biblioteca  "
-                    + " where Apellido_biblioteca = " + idbiblioteca;
+        String consulta = " select * from Huamani_biblioteca  "
+                    + " where Huamani_biblioteca = " + idbiblioteca;
             try {
                 con = cn.getConnection();
                 pst = con.prepareStatement(consulta);
@@ -71,7 +71,7 @@ public class BibliotecaDAO implements CRUD{
     @Override
     public boolean agregarbiblioteca(Biblioteca biblioteca) {
          String consulta = " insert into "
-                    + "Apellido_biblioteca (nombre, codigo, direccion, telefono, estado) "
+                    + "Huamani_biblioteca (nombre, codigo, direccion, telefono, estado) "
                     + " values ('" + biblioteca.getNombre() + "',"
                     + " '" + biblioteca.getNombre() + "',"
                     + " '" + biblioteca.getCodigo() + "',"
@@ -94,7 +94,7 @@ public class BibliotecaDAO implements CRUD{
 
     @Override
     public boolean editarbiblioteca(Biblioteca biblioteca) {
-         String consulta = " update Apellido_biblioteca "
+         String consulta = " update Huamani_biblioteca "
                     + " set "
                     + " nombre = '" + biblioteca.getNombre() + "' "
                     + " codigo = '" + biblioteca.getCodigo() + "' "
@@ -118,7 +118,7 @@ public class BibliotecaDAO implements CRUD{
 
     @Override
     public boolean eliminarbiblioteca(int idbiblioteca) {
-        String consulta = " delete from Apellido_biblioteca  "
+        String consulta = " delete from Huamani_biblioteca  "
                     + " where idbiblioteca = " + idbiblioteca;
             try {
                 con = cn.getConnection();
